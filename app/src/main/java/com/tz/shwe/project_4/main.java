@@ -46,7 +46,7 @@ public class main extends AppCompatActivity {
         spnr_bdr = (Spinner) findViewById(R.id.spinner_bdr);
         spnr_fl = (Spinner) findViewById(R.id.spinner_fl);
         adapter = ArrayAdapter.createFromResource(this,
-                R.array.color_arrays, android.R.layout.simple_spinner_item);
+                R.array.color_arrays, android.R.layout.simple_list_item_1);
 
         spnr_bdr.setAdapter(adapter);
         spnr_fl.setAdapter(adapter);
