@@ -13,8 +13,9 @@ public abstract class Shape extends View {
     protected float x, y, r, a, rad, width, height, o_y, v;
     final int sz;
     protected Paint pnt;
+    protected int fl, bdr;
 
-    protected Shape(Context context) {
+    protected Shape(Context context, int border, int fill) {
         super(context);
         pnt = new Paint();
         sz = 50;
@@ -24,8 +25,11 @@ public abstract class Shape extends View {
         r = (float) Math.random() / rad;
         width = main.width - sz * 2;
         height = main.height - sz * 2;
-        set_value();
         v = 10;
+        bdr = border;
+        fl = fill;
+
+        set_value();
     }
     protected void setShapeAlpha(float alpha) {
         this.setAlpha(alpha);
@@ -48,23 +52,6 @@ public abstract class Shape extends View {
         x = (x * width + sz);
         y = (y * height + sz);
         r = (r * a + main.min);
-        pnt.setColor(Color.rgb((int) (x) % 255, (int) (y) % 255, (int) (r) % 255));
         o_y = y;
-    }
-    protected void add_gravity() {
-        if (y < height) {
-            y += v;
-            v += 10;
-            if (y + r > height)
-                y = height - (r * 9 / 10);
-            invalidate();
-        }
-    }
-    protected void remove_gravity() {
-        if (y > o_y) {
-            y -= v;
-            v -= 10;
-            invalidate();
-        }
     }
 }
