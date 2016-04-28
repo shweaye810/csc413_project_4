@@ -1,6 +1,7 @@
 package com.tz.shwe.project_4;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -26,6 +27,7 @@ public class main extends AppCompatActivity {
     RelativeLayout sh_lyt;
     String mode;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +42,7 @@ public class main extends AppCompatActivity {
         bt_crc = (Button) findViewById(R.id.btn_crc);
         bt_cls = (Button) findViewById(R.id.btn_cls);
 
-        sh_fact = new ShapeFactory();
+        sh_fact = Factory.get_shape_factory(Color.GREEN, Color.BLUE);
         cntx = this.getApplicationContext();
         txt_vw = (TextView) findViewById(R.id.textView);
 
@@ -50,7 +52,7 @@ public class main extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 adjustShapeAlpha();
-                sh = sh_fact.getShape(cntx, "Rectangle");
+                sh = sh_fact.getShape(cntx, ShapeType.Rectangle);
                 sh_lst.add(sh);
                 sh_lyt.addView(sh);
                 updateShapeCount();
@@ -61,7 +63,7 @@ public class main extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 adjustShapeAlpha();
-                sh = sh_fact.getShape(cntx, "Circle");
+                sh = sh_fact.getShape(cntx, ShapeType.Circle);
                 sh_lst.add(sh);
                 sh_lyt.addView(sh);
                 updateShapeCount();
