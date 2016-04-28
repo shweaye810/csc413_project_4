@@ -59,7 +59,39 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
-        android:layout_above="@+id/btn_cls">
+        android:layout_above="@+id/spinner_bdr">
     </RelativeLayout>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_bdr"
+        android:layout_above="@+id/btn_rct"
+        android:layout_toEndOf="@+id/btn_crc"
+        android:entries="@array/color_arrays"
+        android:prompt="@string/border_color_prompt"
+        android:spinnerMode="dialog"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="false"
+        android:layout_alignRight="@+id/btn_cls"
+        android:layout_alignLeft="@+id/btn_cls"
+        android:clickable="true"
+        android:dropDownWidth="fill_parent" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_fl"
+        android:layout_above="@+id/btn_rct"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:entries="@array/color_arrays"
+        android:prompt="@string/fill_color_prompt"
+        android:spinnerMode="dialog"
+        android:layout_toStartOf="@+id/btn_crc"
+        android:layout_alignLeft="@+id/btn_rct"
+        android:layout_alignRight="@+id/btn_rct"
+        android:dropDownWidth="fill_parent"
+        android:clickable="true" />
 
 </RelativeLayout>
