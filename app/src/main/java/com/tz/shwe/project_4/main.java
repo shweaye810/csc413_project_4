@@ -4,8 +4,11 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import android.view.View;
@@ -17,15 +20,16 @@ public class main extends AppCompatActivity {
 
     Vector sh_lst;
     Button bt_rct, bt_crc, bt_cls;
-    ToggleButton tb_mod, tb_grv;
-
+    Spinner spnr_bdr, spnr_fl;
+    int bdr, fl;
     Shape sh;
     ShapeFactory sh_fact;
     Context cntx;
-    TextView txt_vw;
+    static TextView txt_vw;
     public static float width, height, div, min;
     RelativeLayout sh_lyt;
     String mode;
+    ArrayAdapter<CharSequence> adapter;
 
 
     @Override
@@ -36,8 +40,17 @@ public class main extends AppCompatActivity {
         sh_lyt = (RelativeLayout) findViewById(R.id.rltv_lyt);
         div = 3;
         min = 100;
+        bdr = fl = Color.BLACK;
 
         sh_lst = new Vector();
+        spnr_bdr = (Spinner) findViewById(R.id.spinner_bdr);
+        spnr_fl = (Spinner) findViewById(R.id.spinner_fl);
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.color_arrays, android.R.layout.simple_spinner_item);
+
+        spnr_bdr.setAdapter(adapter);
+        spnr_fl.setAdapter(adapter);
+
         bt_rct = (Button) findViewById(R.id.btn_rct);
         bt_crc = (Button) findViewById(R.id.btn_crc);
         bt_cls = (Button) findViewById(R.id.btn_cls);
@@ -78,6 +91,58 @@ public class main extends AppCompatActivity {
                 updateShapeCount();
             }
         });
+
+        spnr_bdr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView parent, View view, int pos, long id) {
+                bdr = get_color(parent.getItemAtPosition(pos).toString());
+                sh_fact = Factory.get_shape_factory(bdr, fl);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView parent) {
+
+            }
+        });
+
+        spnr_fl.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView parent, View view, int pos, long id) {
+                fl = get_color(parent.getItemAtPosition(pos).toString());
+                sh_fact = Factory.get_shape_factory(bdr, fl);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView parent) {
+
+            }
+        });
+
+    }
+    
+    int get_color(String s)
+    {
+        if (s.equalsIgnoreCase("blue"))
+            return Color.BLUE;
+        else if (s.equalsIgnoreCase("cyan"))
+            return Color.CYAN;
+        else if (s.equalsIgnoreCase("Dark Gray"))
+            return Color.DKGRAY;
+        else if (s.equalsIgnoreCase("Gray"))
+            return Color.GRAY;
+        else if (s.equalsIgnoreCase("Green"))
+            return Color.GREEN;
+        else if (s.equalsIgnoreCase("Light Gray"))
+            return Color.LTGRAY;
+        else if (s.equalsIgnoreCase("Magenta"))
+            return Color.MAGENTA;
+        else if (s.equalsIgnoreCase("Red"))
+            return Color.RED;
+        else if (s.equalsIgnoreCase("white"))
+            return Color.WHITE;
+        else if (s.equalsIgnoreCase("Yellow"))
+            return Color.YELLOW;
+        return Color.BLACK;
     }
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
