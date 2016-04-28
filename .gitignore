@@ -6,3 +6,7 @@
 .DS_Store
 /build
 /captures
+
+GPATH
+*TAGS
+GSYMS
