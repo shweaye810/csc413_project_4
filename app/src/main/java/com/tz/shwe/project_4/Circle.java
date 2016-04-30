@@ -15,12 +15,12 @@ public class Circle extends Shape {
     protected void onDraw(Canvas cnv) {
         pnt.setColor(fl);
         pnt.setStyle(Paint.Style.FILL);
-        cnv.drawRect(x, y, x + r, y + r, pnt);
+        cnv.drawCircle(x, y, r, pnt);
         int w = (int) (r) / 10;
         pnt.setStrokeWidth(w);
         pnt.setColor(bdr);
         pnt.setStyle(Paint.Style.STROKE);
-        cnv.drawRect(x, y, x + r, y + r, pnt);
+        cnv.drawCircle(x, y, r, pnt);
     }
     protected ShapeType getShapeType() {
         return ShapeType.Circle;
