@@ -10,9 +10,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 import android.view.View;
-import android.widget.CompoundButton;
 
 import java.util.Vector;
 
@@ -26,7 +24,7 @@ public class main extends AppCompatActivity {
     ShapeFactory sh_fact;
     Context cntx;
     static TextView txt_vw;
-    public static float width, height, div, min;
+    public static float width, height;
     RelativeLayout sh_lyt;
     String mode;
     ArrayAdapter<CharSequence> adapter;
@@ -38,8 +36,6 @@ public class main extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         sh_lyt = (RelativeLayout) findViewById(R.id.rltv_lyt);
-        div = 3;
-        min = 100;
         bdr = fl = Color.BLACK;
 
         sh_lst = new Vector();
