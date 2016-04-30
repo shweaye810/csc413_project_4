@@ -10,7 +10,7 @@ import android.view.View;
  * Created by blo on 3/24/16.
  */
 public abstract class Shape extends View {
-    protected float x, y, r, a, rad, width, height;
+    protected float x, y, r, a, rad, width, height, min;
     final int sz;
     protected Paint pnt;
     protected int fl, bdr;
@@ -19,7 +19,7 @@ public abstract class Shape extends View {
         super(context);
         pnt = new Paint();
         sz = 50;
-        rad = main.div;
+        rad = 1;
         x = (float) Math.random();
         y = (float) Math.random();
         r = (float) Math.random() / rad;
@@ -27,7 +27,7 @@ public abstract class Shape extends View {
         height = main.height - sz * 2;
         bdr = border;
         fl = fill;
-
+        min = 30;
         set_value();
     }
     protected void setShapeAlpha(float alpha) {
@@ -50,6 +50,6 @@ public abstract class Shape extends View {
         a = (float) Math.sqrt(width * height / 50);
         x = (x * width + sz);
         y = (y * height + sz);
-        r = (r * a + main.min);
+        r = (r * a + min);
     }
 }
