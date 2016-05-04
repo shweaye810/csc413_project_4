@@ -29,7 +29,6 @@ public class main extends AppCompatActivity {
     String mode;
     ArrayAdapter<CharSequence> adapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +50,6 @@ public class main extends AppCompatActivity {
         bt_crc = (Button) findViewById(R.id.btn_crc);
         bt_cls = (Button) findViewById(R.id.btn_cls);
 
-        sh_fact = Factory.get_shape_factory(Color.GREEN, Color.BLUE);
         cntx = this.getApplicationContext();
         txt_vw = (TextView) findViewById(R.id.textView);
 
